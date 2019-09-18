@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vendor Setup Form</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
+
+	<script src="https://use.fontawesome.com/939e9dd52c.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class = "container">
+        <h1>Vendor Set Up Form</h1>
+    </div>
+    <div class = "container">
+    <form>
+        <div class="form-group">
+            <label for="TSCemail"> TSC Email address</label>
+            <input type="email" class="form-control" id="TSCemail" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">Please use TSC Email</small>
+        </div>
+    
+        <div class="form-group">
+            <label for="exampleInputEmail1"> Vendor Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">Optional</small>
+        </div>
+    </div>
+
+	<div class="mainDiv" align="left">
+        <h3 align="left">Upload I9</h2align></h3>
+		<progress id="I9uploader" value="0" max="100">0%</progress>
+		<input type="file" id="I9Button" value="upload"/>
+    </div>
+    <div class="mainDiv" align="left">
+        <h3 align="left">Upload Resume</h3>
+        <progress id="RESuploader" value="0" max="100">0%</progress>
+        <input type="file" id="RESButton" value="upload"/>
+    </div>
+
+
+
+<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCUDZatt8qeeddTCB3szH5tBQyyyuZm83U",
+    authDomain: "test-upload-85307.firebaseapp.com",
+    databaseURL: "https://test-upload-85307.firebaseio.com",
+    projectId: "test-upload-85307",
+    storageBucket: "test-upload-85307.appspot.com",
+    messagingSenderId: "637316336979",
+    appId: "1:637316336979:web:aec7aeafd09c7aa50865a6"
+  };
+  firebase.initializeApp(config);
+  //-------------------------------------
+  var email = document.getElementById("TSCemail").value.replace("@", "").replace(".", "");
+
+  var I9uploader = document.getElementById('I9uploader');
+  var I9Button = document.getElementById('I9Button');
+  I9Button.addEventListener('change', function(e){
+  var file = e.target.files[0];
+  var storageRef = firebase.storage().ref('I9s/'+ email + file.name);
+  var task = storageRef.put(file);
+
+  var RESuploader = document.getElementById('RESuploader');
+  var RESButton = document.getElementById('RESButton');
+  RESButton.addEventListener('change', function(e){
+  var file = e.target.files[0];
+  var storageRef = firebase.storage().ref('RESs/'+ email + file.name);
+  var task = storageRef.put(file);
+
+  task.on('state_changed', function progress(snapshot) {
+    var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+    RESuploader.value = percentage;
+  }, function error(err) {
+
+  },function complete() {
+  });
+});  
+  task.on('state_changed', function progress(snapshot) {
+    var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+    I9uploader.value = percentage;
+  }, function error(err) {
+
+  },function complete() {
+  });
+});  
+  
+  
+
+</script>
+</body>
+</html>
