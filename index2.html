@@ -34,9 +34,9 @@
 		<input type="file" id="I9Button" value="upload"/>
     </div>
     <div class="mainDiv" align="left">
-        <h3 align="left">Upload Resume</h3>
-        <progress id="RESuploader" value="0" max="100">0%</progress>
-        <input type="file" id="RESButton" value="upload"/>
+        <h3 align="left">Upload Invoice</h3>
+        <progress id="INVuploader" value="0" max="100">0%</progress>
+        <input type="file" id="INVButton" value="upload"/>
     </div>
 
 
@@ -64,16 +64,16 @@
   var storageRef = firebase.storage().ref('I9s/'+ email + file.name);
   var task = storageRef.put(file);
 
-  var RESuploader = document.getElementById('RESuploader');
-  var RESButton = document.getElementById('RESButton');
-  RESButton.addEventListener('change', function(e){
+  var INVuploader = document.getElementById('INVuploader');
+  var INVButton = document.getElementById('INVButton');
+  INVButton.addEventListener('change', function(e){
   var file = e.target.files[0];
-  var storageRef = firebase.storage().ref('RESs/'+ email + file.name);
+  var storageRef = firebase.storage().ref('INVs/'+ email + file.name);
   var task = storageRef.put(file);
 
   task.on('state_changed', function progress(snapshot) {
     var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
-    RESuploader.value = percentage;
+    INVuploader.value = percentage;
   }, function error(err) {
 
   },function complete() {
