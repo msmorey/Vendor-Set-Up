@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <div class = "container">
+        <h1>Vendor Set Up Form</h1>
+    </div>
+    <div class = "container">
+    <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1"> TSC Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">Please use TSC Email</small>
+        </div>
+    
+        <div class="form-group">
+            <label for="exampleInputEmail1"> Vendor Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">Optional</small>
+        </div>
+    
+    
+    
+    
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Upload W9</label>
+          <input type="file" class="form-control-file file-select" id="exampleFormControlFile1">
+        </div>
+      </form>
+
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Upload Invoice</label>
+          <input type="file" class="form-control-file file-select" id="exampleFormControlFile1">
+        </div>
+        <button type="submit" class="btn btn-primary file-submit">Submit</button>
+      </form>
+    </div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyB8zoptTtqmO2sb4T6of2pNntPL_SLeGPQ",
+    authDomain: "vendor-set-up.firebaseapp.com",
+    databaseURL: "https://vendor-set-up.firebaseio.com",
+    projectId: "vendor-set-up",
+    storageBucket: "vendor-set-up.appspot.com",
+    messagingSenderId: "649996759821",
+    appId: "1:649996759821:web:9efda98b7acc99d729f644"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+let selectedFile;
+function handleFileUploadChange(e) {
+  selectedFile = e.target.files[0];
+}
+
+const storageService = firebase.storage();
+const storageRef = storageService.ref();
+
+document.querySelector('.file-select').addEventListener('change', handleFileUploadChange);
+document.querySelector('.file-submit').addEventListener('click', handleFileUploadSubmit);
+
+function handleFileUploadSubmit(e) {
+  const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+  uploadTask.on('state_changed', (snapshot) => {
+  // Observe state change events such as progress, pause, and resume
+  }, (error) => {
+    // Handle unsuccessful uploads
+    console.log(error);
+  }, () => {
+     // Do something once upload is complete
+     console.log('success');
+  });
+}
+
+
+</script>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
