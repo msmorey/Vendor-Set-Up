@@ -6,38 +6,62 @@
 	<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet">
 
 	<script src="https://use.fontawesome.com/939e9dd52c.js"></script>
+	
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <div class = "container">
-        <h1>Vendor Set Up Form</h1>
+	<!--  Heading // The heading was already in a container. I moved the heading inside a row and column   -->
+    <div class="container">
+	    <div class="row">
+		    <div class="col-md-8 offset-md-2">
+			    <h1>Vendor Set Up Form</h1>
+		    </div>
+	    </div>
     </div>
-    <div class = "container">
-    <form>
-        <div class="form-group">
-            <label for="TSCemail"> TSC Email address</label>
-            <input type="email" class="form-control" id="TSCemail" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">Please use TSC Email</small>
-        </div>
-    
-        <div class="form-group">
-            <label for="exampleInputEmail1"> Vendor Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">Optional</small>
-        </div>
-    </div>
+	<!-- Form // The form was already in a container. I moved the form inside a row and column -->	
+    <div class="container">
+	    <div class="row">
+		    <div class="col-md-8 offset-md-2">
+			  <form>
+				<div class="form-group">
+				    <label for="TSCemail"> TSC Email address</label>
+				    <input type="email" class="form-control" id="TSCemail" aria-describedby="emailHelp" placeholder="Enter email">
+				    <small id="emailHelp" class="form-text text-muted">Please use TSC Email</small>
+				</div>
 
-	<div class="mainDiv" align="left">
-        <h3 align="left">Upload I9</h2align></h3>
-		<progress id="I9uploader" value="0" max="100">0%</progress>
-		<input type="file" id="I9Button" value="upload"/>
-    </div>
-    <div class="mainDiv" align="left">
-        <h3 align="left">Upload Invoice</h3>
-        <progress id="INVuploader" value="0" max="100">0%</progress>
-        <input type="file" id="INVButton" value="upload"/>
-    </div>
+				<div class="form-group">
+				    <label for="exampleInputEmail1"> Vendor Email address</label>
+				    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+				    <small id="emailHelp" class="form-text text-muted">Optional</small>
+				</div>
+			</form>  
+			<!-- The closing form above was originally an extra closing div tag -->
+		    </div>
+	    </div>
+    	
+
+		<div class="mainDiv" align="left">
+		<h3 align="left">Upload I9</h2align></h3>
+			<progress id="I9uploader" value="0" max="100">0%</progress>
+			<input type="file" id="I9Button" value="upload"/>
+		 </div>
+	    
+	    	<div class="mainDiv" align="left">
+			<h3 align="left">Upload Invoice</h3>
+			<progress id="INVuploader" value="0" max="100">0%</progress>
+			<input type="file" id="INVButton" value="upload"/>
+		</div>
+		
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8">
+				<button type="button" class="btn btn-secondary">Submit</button>
+			</div>
+		</div>
+	</div>
 
 
 
@@ -91,5 +115,15 @@
   
 
 </script>
+	
+	
+	
+	
+	
+	
+<!-- Bootstrap -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
